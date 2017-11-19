@@ -21,13 +21,11 @@ public class Driver implements DriverInterface {
 				return arrayAddAll;
 			case AddAllAtIndexZero:
 				ArrayBasedList<Integer> arrayAddAllZero = new ArrayBasedList<Integer>();
-				
-//				ArrayBasedList test2 = new ArrayBasedList();
-				
-				for (int i = 1; i < 10000; i++) {
-					arrayAddAllZero.add(new Integer(i), 0);
-				}
-				
+								
+//				for (int i = 1; i < 10000; i++) {
+//					arrayAddAllZero.add(new Integer(i), 0);
+//				}
+//				
 //				for (int i = 0; i < arrayAddAllZero.size(); i++) {
 //					System.out.println(test2.getArray()[i]);
 //				}
@@ -36,7 +34,7 @@ public class Driver implements DriverInterface {
 			case AddSortedEven:
 				ListInterface<Integer> arrayAddSortedEven = new ArrayBasedList<Integer>();
 				arrayAddSortedEven = this.initializeList(arrayAddSortedEven, 1, 10000, 2);				
-				
+//				
 //				for (int i = 2; i <= 10000; i = i + 2) {
 //					arrayAddSortedEven.addSorted(new Integer(i));
 //				}
@@ -44,10 +42,11 @@ public class Driver implements DriverInterface {
 				return arrayAddSortedEven;
 			case AddSortedOdd:
 				ArrayBasedList<Integer> arrayAddSortedOdd = new ArrayBasedList<Integer>();
+//				arrayAddSortedEven = this.initializeList(arrayAddSortedOdd, 0, 10000, 2);
 				
-				for (int i = 1; i < 10000; i = i + 2) {
-					arrayAddSortedOdd.addSorted(new Integer(i));
-				}
+//				for (int i = 1; i < 10000; i = i + 2) {
+//					arrayAddSortedOdd.addSorted(new Integer(i));
+//				}
 				
 				return arrayAddSortedOdd;
 			case RemoveAllEven:
@@ -142,6 +141,8 @@ public class Driver implements DriverInterface {
 	@Override
 	public ListInterface<Integer> initializeList(ListInterface<Integer> list, int firstNumber, int lastNumber,
 			int increment) {
+		
+		list.removeAll();
 
 		for (int i = firstNumber; i < lastNumber; i = i + increment) {
 			list.add(i);

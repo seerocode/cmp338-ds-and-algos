@@ -1,6 +1,7 @@
 public class Driver implements DriverInterface {
 	
 	private static int[] listOfNumbers = new int[10000000];
+	private static long[] runTimes = new long[10];
 	private static int[] targets = {500, 10000, 100000, 1000000, 5000000, 7500000, 10000000};
 
 	
@@ -17,7 +18,7 @@ public class Driver implements DriverInterface {
 			listOfNumbers[indexOfNum] = numCountUp++;
 		}
 		
-		return listOfNumbers;
+		return this.listOfNumbers;
 	}
 
 	/**
@@ -34,6 +35,8 @@ public class Driver implements DriverInterface {
 	 */
 	@Override
 	public RunTime runLinearSearch(int[] listOfNumbers, int target, int numberOfTimes) {
+		listOfNumbers = getListOfNumbers();
+		
 		LinearSearch newLinearSearch = new LinearSearch();
 		
 		for (int counter = 0; counter < numberOfTimes; counter++) {
@@ -48,6 +51,8 @@ public class Driver implements DriverInterface {
 	 */
 	@Override
 	public RunTime runBinarySearch(int[] listOfNumbers, int target, int numberOfTimes) {
+		listOfNumbers = getListOfNumbers();
+		
 		BinarySearch newBinarySearch = new BinarySearch();
 		
 		for (int counter = 0; counter < numberOfTimes; counter++) {
@@ -57,19 +62,6 @@ public class Driver implements DriverInterface {
 		return newBinarySearch;
 	}
 	
-//	/**
-//	 * This method resets the linearsearch
-//	 */
-//	public void resetNewLinearSearchRunTimes(){
-//		newLinearSearch.resetRunTimes();
-//	}
-//	
-//	/**
-//	 * This method returns the binarysearch
-//	 */
-//	public void resetNewBinarySearchRunTimes(){
-//		newBinarySearch.resetRunTimes();
-//	}
 
 	public static void main(String[] args) {
 		Driver Driver = new Driver();
@@ -78,29 +70,6 @@ public class Driver implements DriverInterface {
 		int [] numbers = Driver.getListOfNumbers();
 		int[] targets = Driver.getTargets();
 						
-//		for(int i = 0; i < targets.length; i++) {
-//			// reset array
-//			Driver.resetNewLinearSearchRunTimes();
-//			for (int j = 0; j < 10; j++) {
-//				// run linear search
-//				Driver.runLinearSearch(numbers, targets[i], j);
-//			}
-//			Driver.resetNewLinearSearchRunTimes();
-//		}
-//				
-//		
-//		for(int i = 0; i < targets.length; i++) {
-//			// reset array
-//			Driver.resetNewBinarySearchRunTimes();
-//			for (int j = 0; j < 10; j++) {
-//				// run binary search
-//				Driver.runBinarySearch(numbers, targets[i], j);
-//			}
-//			// reset array
-//			Driver.resetNewBinarySearchRunTimes();
-//
-//		}
-
 	}
 
 }

@@ -1,5 +1,6 @@
 import java.util.Iterator;
 
+@SuppressWarnings({ "rawtypes", "unused" })
 public class BinarySearchTree<K extends Comparable<? super K>, V> implements Iterable {
 
 	private TreeNode<K, V> root;
@@ -59,12 +60,38 @@ public class BinarySearchTree<K extends Comparable<? super K>, V> implements Ite
 		this.root = deleteItem(this.root, key);
 	}
 
+
+	// return height of the tree from the root
 	public int height() {
 		return treeHeight(this.root);
 	}
 
+	// check if tree is balanced based on root node
 	public boolean isBalanced() {
-		return treeIsBalanced(this.root);
+		return treeIsBalanced(this.getRoot());
+	}
+
+	// balance a tree
+	@SuppressWarnings("unchecked")
+	public void balance() {
+
+		// generate new tree iterator
+		TreeIterator<K, V> iter = new TreeIterator<K, V>((this));
+		// iterater in order
+		iter.setInorder();
+		
+		// get the size of the iterator and set as the count of items
+		int count = iter.size();
+
+		// create a new array made of tree items with the size of the iterated elements
+		TreeItem[] arr = new TreeItem[count];
+
+		// loop through and assign iterated items to array
+		for (int i = 0; i < count; i++)
+			arr[i] = iter.next();
+		// balance tree at root
+		root = balanceTree(arr, 0, count - 1);
+
 	}
 
 	/******************************************************************************/
@@ -160,11 +187,13 @@ public class BinarySearchTree<K extends Comparable<? super K>, V> implements Ite
 		}
 	}
 
+	////////////////////////////////////////////////////////////////
+
 	private int treeHeight(TreeNode<K, V> node) {
 		int treeHeight = 0;
 
 		if (node == null) {
-			return -1;
+			return 0;
 		}
 		// recursively get height of left subtree until
 		// we reach an empty node
@@ -193,7 +222,7 @@ public class BinarySearchTree<K extends Comparable<? super K>, V> implements Ite
 		if (node == null) {
 			return isTreeBalanced;
 		}
-		
+
 		// recursively get left height of tree
 		leftHeight = treeHeight(node.getLeftChild());
 		// recursively get right height of tree
@@ -206,9 +235,26 @@ public class BinarySearchTree<K extends Comparable<? super K>, V> implements Ite
 		// return that its balanced
 		return isTreeBalanced;
 	}
-	
-	public void balance() {
-		
+
+	@SuppressWarnings({ "unchecked" })
+	private TreeNode balanceTree(TreeItem[] arr, int first, int last) {
+
+		if (first > last) {
+			return null;
+		}
+
+		// find center
+		int mid = (first + last) / 2;
+		// new tree item is the center of the array
+		TreeItem<K, V> treeItem = arr[mid];
+
+		TreeNode<K, V> node = new TreeNode<K, V>(treeItem);
+		// balance on the left
+		node.setLeftChild(balanceTree(arr, first, mid - 1));
+		//balance on the right
+		node.setRightChild(balanceTree(arr, mid + 1, last));
+
+		return node;
 	}
 
 }
