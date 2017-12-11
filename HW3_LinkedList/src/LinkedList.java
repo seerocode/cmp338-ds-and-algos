@@ -26,11 +26,11 @@ public class LinkedList<I> implements ListInterface<I> {
 		LinkedListNode<I> newNode = new LinkedListNode<I>(obj);
 
 		if (isEmpty()) {
-			head = newNode;
-			tail = newNode;
+			this.head = newNode;
+			this.tail = newNode;
 		} else {
-			tail.setNext(newNode);
-			tail = newNode;
+			this.tail.setNext(newNode);
+			this.tail = newNode;
 		}
 	
 		this.size++;		
@@ -113,7 +113,7 @@ public class LinkedList<I> implements ListInterface<I> {
 		
 		I getObj = null;
 		
-		if((index >= 0) && (index < size)) {
+		if((index >= 0) && (index < this.size)) {
 			LinkedListNode<I> currentNode = head;
 			int currentIndex = 0;
 			

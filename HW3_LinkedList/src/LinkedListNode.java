@@ -4,15 +4,19 @@ public class LinkedListNode<I> {
 	private I data; //data in the node
 	private LinkedListNode<I> next; // pointer to next node
 
-	// constructor sets default node
-	public LinkedListNode() {
-		this.data = null;
-		this.next = null;
-	}
+//	// constructor sets default node
+//	public LinkedListNode() {
+//		this.data = null;
+//		this.next = null;
+//	}
 	
 	// 
 	public LinkedListNode(I data) {
 		// default set the data of the node to null
+		this.data = null;
+	}
+	
+	public LinkedListNode(I data, LinkedListNode<I> next) {
 		this.data = null;
 		// default set the pointer to next node to null
 		this.next = null;
@@ -20,7 +24,7 @@ public class LinkedListNode<I> {
 	
 	// return data inside Object reference held by node
 	public I getData() {
-		return data;
+		return this.data;
 	}
 	
 	// set data in the node
@@ -30,7 +34,7 @@ public class LinkedListNode<I> {
 	
 	// get reference to next node in the linked list
 	public LinkedListNode<I> getNext() {
-		return next;
+		return this.next;
 	}
 	
 	// set reference to the next node in the linked list

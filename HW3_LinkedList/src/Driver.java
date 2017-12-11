@@ -14,10 +14,10 @@ public class Driver implements DriverInterface {
 			switch (forTestType) {
 			case AddAll:
 				ArrayBasedList<Integer> arrayAddAll = new ArrayBasedList<Integer>();				
-				for (int i = 1; i <= 10000; i++) {
-					arrayAddAll.add(new Integer(i));
-				}
-				
+//				for (int i = 1; i <= 10000; i++) {
+//					arrayAddAll.add(new Integer(i));
+//				}
+//				
 				return arrayAddAll;
 			case AddAllAtIndexZero:
 				ArrayBasedList<Integer> arrayAddAllZero = new ArrayBasedList<Integer>();
@@ -35,9 +35,9 @@ public class Driver implements DriverInterface {
 				ListInterface<Integer> arrayAddSortedEven = new ArrayBasedList<Integer>();
 				arrayAddSortedEven = this.initializeList(arrayAddSortedEven, 1, 10000, 2);				
 //				
-//				for (int i = 2; i <= 10000; i = i + 2) {
-//					arrayAddSortedEven.addSorted(new Integer(i));
-//				}
+				for (int i = 0; i < 10000/2; i = i + 2) {
+					arrayAddSortedEven.addSorted(new Integer(i + 2));
+				}
 				
 				return arrayAddSortedEven;
 			case AddSortedOdd:
@@ -53,19 +53,19 @@ public class Driver implements DriverInterface {
 				ListInterface<Integer> arrayRemoveEven = new ArrayBasedList<Integer>();
 				arrayRemoveEven = this.initializeList(arrayRemoveEven, 1, 10001, 1);
 				
-				for (int index = 5; index < arrayRemoveEven.size(); index++) {
-					arrayRemoveEven.remove(index);
-					
-				}
+//				for (int index = 5; index < arrayRemoveEven.size(); index++) {
+//					arrayRemoveEven.remove(index);
+//					
+//				}
 				
 				return arrayRemoveEven;
 			case RemoveAllOdd:
 				ListInterface<Integer> arrayRemoveOdd = new ArrayBasedList<Integer>();
 				arrayRemoveOdd = this.initializeList(arrayRemoveOdd, 1, 10001, 1);
 				
-				for (int i = 1; i < 10000; i = i + 2) {
-					arrayRemoveOdd.remove(1000 - 1);
-				}
+//				for (int i = 1; i < 10000; i = i + 2) {
+//					arrayRemoveOdd.remove(1000 - 1);
+//				}
 				
 				return arrayRemoveOdd;
 			
@@ -75,11 +75,12 @@ public class Driver implements DriverInterface {
 			switch (forTestType) {
 			case AddSortedEven:
 				ListInterface<Integer> llAddSortedEven = new LinkedList<Integer>();
-				llAddSortedEven = this.initializeList(llAddSortedEven, 1, 10000, 2);
+				//odd numbers les than 10,000
+				llAddSortedEven = this.initializeList(llAddSortedEven, 1, 5001, 2);
 				
-				for (int i = 2; i <= llAddSortedEven.size(); i = i + 2) {
-					llAddSortedEven.addSorted(new Integer(i));
-				}
+//				for (int i = 2; i <= llAddSortedEven.size(); i = i + 2) {
+//					llAddSortedEven.addSorted(new Integer(i));
+//				}
 				
 				return llAddSortedEven;
 				
@@ -142,7 +143,7 @@ public class Driver implements DriverInterface {
 	public ListInterface<Integer> initializeList(ListInterface<Integer> list, int firstNumber, int lastNumber,
 			int increment) {
 		
-		list.removeAll();
+//		list.removeAll();
 
 		for (int i = firstNumber; i < lastNumber; i = i + increment) {
 			list.add(i);
